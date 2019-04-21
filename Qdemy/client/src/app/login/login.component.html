@@ -1,0 +1,14 @@
+<div>
+  <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+    <input
+      id="email"
+      ngModel
+      name="email"
+      type="email"
+      required
+      placeholder="Enter your SPIT Email ID"
+    />
+    <input id="pwd" ngModel required name="pwd" type="password" />
+    <button type="submit">Login</button>
+  </form>
+</div>
