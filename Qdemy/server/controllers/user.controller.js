@@ -8,7 +8,7 @@ exports.register = (req, res) => {
 
     let user =
     {
-        fname: req.body.first_name + " " + req.body.last_name,
+        name: req.body.name,
         email: req.body.email,
         pwd: req.body.pwd,
         level: 0
