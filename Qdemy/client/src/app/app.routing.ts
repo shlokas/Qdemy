@@ -15,7 +15,7 @@ const appRoutes: Routes = [
     component: MainComponent,
     children: [
       {
-        path: "student/:uid",
+        path: "student",
         component: StudentComponent,
         children: [
           { path: "dash", component: StudDashComponent },

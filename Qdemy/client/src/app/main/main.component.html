@@ -1,9 +1,25 @@
 <nav>
-  Navbar here.
-  <div class="logout">
-    <button (click)="logout()">
-      Logout
-    </button>
+  <div>
+    <img
+      style="height: 12vh;
+      margin-top: 19px;"
+      src="../../assets/SPIT.png"
+      alt=""
+    />
   </div>
+  <div class="header-text">
+    <span style="font-size: 1.4rem">
+      <a href="www.spit.ac.in" target="_blank">
+        Sardar Patel Institute of Technology
+      </a>
+    </span>
+    <br />
+    <span style="font-size: 2.1rem; font-weight: bold"
+      >Online Room Booking System</span
+    >
+  </div>
+  <a class=" login" (click)="logout()"
+    ><i class="	fa fa-user-circle"></i>&nbsp;&nbsp;Logout</a
+  >
 </nav>
 <router-outlet></router-outlet>

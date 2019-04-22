@@ -1,3 +1,25 @@
-<p>
-  new-perm works!
-</p>
+<form #permitForm="ngForm">
+  Requirement for:
+  <div class="form-check">
+    <input
+      class="form-check-input"
+      type="radio"
+      name="islab"
+      id="islab1"
+      value="true"
+      ngModel
+    />
+    <label class="form-check-label" for="islab1">Lab</label>
+  </div>
+  <div class="form-check">
+    <input
+      class="form-check-input"
+      type="radio"
+      name="islab"
+      id="islab2"
+      value="false"
+      ngModel
+    />
+    <label class="form-check-label" for="islab2">Classroom</label>
+  </div>
+</form>

@@ -1,3 +1,62 @@
-<p>
-  hod works!
-</p>
+<div class="holder">
+  <!-- views all requests here  -->
+  <h3>
+    Pending Permission Requests
+  </h3>
+  <div class="permission-cards">
+    <div class="card" *ngFor="let perm of permissions">
+      <div
+        class="card-header"
+        [class.status-pending]="perm.status == 0 || perm.status == 1"
+        [class.status-granted]="perm.status == 2"
+        [class.status-rejected]="perm.status == 3"
+      >
+        <div
+          [class.status-pending]="perm.status == 0 || perm.status == 1"
+          [class.status-granted]="perm.status == 2"
+          [class.status-rejected]="perm.status == 3"
+        >
+          <strong>Requirement:</strong>
+          <span *ngFor="let roomno of perm.room">&nbsp; {{ roomno }} </span>
+        </div>
+      </div>
+      <div
+        class="card-body"
+        [class.status-pending]="perm.status == 0 || perm.status == 1"
+        [class.status-granted]="perm.status == 2"
+        [class.status-rejected]="perm.status == 3"
+      >
+        <div class="card-title">{{ perm.reason }}</div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card-text">
+              Date:<strong> {{ perm.date_from }} to {{ perm.date_to }}</strong>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card-text">
+              Student Name:<strong> {{ perm.student_name }}</strong>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card-text">
+              Timings:
+              <strong>{{ perm.time_from }} to {{ perm.time_to }}</strong>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card-text">
+              Student Branch: {{ perm.student_branch }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="perm.status == 0" class="card-footer text-right">
+        <button class="btn btn-success">Accept</button> &nbsp;&nbsp;&nbsp;
+        <button class="btn btn-danger">Reject</button>
+      </div>
+    </div>
+  </div>
+</div>

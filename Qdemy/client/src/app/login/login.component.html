@@ -1,14 +1,109 @@
-<div>
-  <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
-    <input
-      id="email"
-      ngModel
-      name="email"
-      type="email"
-      required
-      placeholder="Enter your SPIT Email ID"
+<nav>
+  <!-- <a class=""> -->
+  <div>
+    <img
+      style="height: 12vh;
+      margin-top: 19px;"
+      src="../../assets/SPIT.png"
+      alt=""
     />
-    <input id="pwd" ngModel required name="pwd" type="password" />
-    <button type="submit">Login</button>
+  </div>
+  <div class="header-text">
+    <span style="font-size: 1.4rem">
+      <a href="www.spit.ac.in" target="_blank">
+        Sardar Patel Institute of Technology
+      </a>
+    </span>
+    <br />
+    <span style="font-size: 2.1rem; font-weight: bold"
+      >Online Room Booking System</span
+    >
+  </div>
+  <!-- </a> -->
+  <a (click)="toggle()" class="login"
+    ><i class="fa fa-user"></i> &nbsp;{{ loginmsg }}</a
+  >
+
+  <!-- <a (click)="toggleLogin()" class="navbar-text"><i class="fa fa-user"></i> &nbsp;Logout</a> -->
+</nav>
+
+<div
+  class="container mx-auto justify-content-center "
+  style="margin-top: 130px;width: 500px"
+  *ngIf="islogin == true"
+>
+  <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+    <div class="form-group">
+      <input
+        id="email"
+        ngModel
+        name="email"
+        type="email"
+        required
+        class="form-control"
+        placeholder="Enter your Email ID"
+      />
+    </div>
+    <div class="form-group">
+      <input
+        class="form-control"
+        id="pwd"
+        ngModel
+        required
+        name="pwd"
+        type="password"
+        placeholder="Password"
+      />
+    </div>
+    <button class="btn btn-block submit" type="submit">Login</button>
+  </form>
+</div>
+<div
+  class="container mx-auto justify-content-center "
+  style="margin-top: 130px;width: 500px"
+  *ngIf="islogin == false"
+>
+  <form #regForm="ngForm" (ngSubmit)="register(regForm)">
+    <div class="form-group">
+      <input
+        class="form-control"
+        id="regemail"
+        ngModel
+        name="regemail"
+        type="email"
+        required
+        placeholder="Enter your Email ID"
+      />
+    </div>
+    <div class="form-group">
+      <input
+        class="form-control"
+        id="firstname"
+        name="firstname"
+        type="text"
+        placeholder="First Name"
+      />
+    </div>
+    <div class="form-group">
+      <input
+        class="form-control"
+        id="lastname"
+        name="lastname"
+        type="text"
+        placeholder="Last Name"
+      />
+    </div>
+    <div class="form-group">
+      <input
+        class="form-control"
+        id="regpwd"
+        ngModel
+        required
+        name="regpwd"
+        type="password"
+      />
+    </div>
+
+    <button class="btn btn-block submit" type="submit">Register</button>
   </form>
 </div>

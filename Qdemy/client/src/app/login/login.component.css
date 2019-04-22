@@ -1,0 +1,44 @@
+a {
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+a:visited {
+  color: inherit;
+}
+nav {
+  display: -webkit-box;
+  padding: 0;
+  color: inherit;
+  border-bottom: 1px solid #888888;
+}
+
+.header-text {
+  padding: 27px 5px;
+
+  /* color: black; */
+}
+.login {
+  cursor: pointer;
+  padding: 0 10px;
+  position: absolute;
+  right: 5px;
+  top: 7vh;
+  font-size: 1.3rem;
+}
+
+.submit {
+  background-color: transparent;
+  border: 1px solid #bbbbbb;
+  transition: all 0.31s ease;
+  color: #dadada;
+}
+
+.submit:hover {
+  transition: all 0.31s ease;
+  color: #000000;
+  background-color: #bbbbbb;
+}

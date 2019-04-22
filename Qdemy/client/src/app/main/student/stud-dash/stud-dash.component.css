@@ -1,0 +1,16 @@
+.card {
+  color: black;
+  margin: 20px 45px;
+}
+.holder {
+  padding: 30px;
+}
+.status-pending {
+  background: #fbebb9;
+}
+.status-granted {
+  background: #d7ffcb;
+}
+.status-rejected {
+  background: #ffd9dd;
+}
