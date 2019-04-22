@@ -1,11 +1,11 @@
 import { Component, OnInit } from "@angular/core";
-import { Student } from "../../models/student.model";
-import { HOD } from "../../models/hod.model";
-import { VP } from "../../models/vp.model";
+import { User } from "../../models/user.model";
 import { HttpClient } from "@angular/common/http";
 import { NgForm } from "@angular/forms";
 import "rxjs/add/operator/map";
 import { Router } from "@angular/router";
+
+export let user: User;
 
 @Component({
   selector: "app-login",
@@ -13,9 +13,7 @@ import { Router } from "@angular/router";
   styleUrls: ["./login.component.css"]
 })
 export class LoginComponent implements OnInit {
-  student: Student;
-  hod: HOD;
-  vp: VP;
+  // export const user: User;
   islogin: boolean = true;
   loginmsg: string = "Register";
 
@@ -27,14 +25,6 @@ export class LoginComponent implements OnInit {
   login(loginForm: NgForm) {
     console.log(loginForm);
 
-    let level = 0;
-
-    // hod - role = 1
-    // return ({email: 'asdf', pwd: '34rf'});
-
-    // vp - role = 2
-    // return ({email: 'hjk', pwd: 'sdfgh'});
-
     this.http
       .post("http://127.0.0.1:8080/user/login", {
         email: loginForm.value.email,
@@ -42,10 +32,14 @@ export class LoginComponent implements OnInit {
       })
       .subscribe((data: any) => {
         console.log(data);
-        if (data.level == 0) {
-          console.log(data.level);
-          level = data.level;
+        user = data;
+        // student login
+        if (user.level == 0) {
           this.router.navigate(["main/student"]);
+        } else if (user.level == 1) {
+          this.router.navigate(["/main/hod/dash"]);
+        } else {
+          this.router.navigate(["/main/vp/dash"]);
         }
       });
   }

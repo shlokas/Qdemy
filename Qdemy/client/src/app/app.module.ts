@@ -10,8 +10,9 @@ import { StudentComponent } from "./main/student/student.component";
 import { HodComponent } from "./main/hod/hod.component";
 import { VpComponent } from "./main/vp/vp.component";
 import { HttpClientModule } from "@angular/common/http";
-import { StudDashComponent } from './main/student/stud-dash/stud-dash.component';
-import { NewPermComponent } from './main/student/new-perm/new-perm.component';
+import { StudDashComponent } from "./main/student/stud-dash/stud-dash.component";
+import { NewPermComponent } from "./main/student/new-perm/new-perm.component";
+import { HttpService } from "src/services/http.service";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { NewPermComponent } from './main/student/new-perm/new-perm.component';
     NewPermComponent
   ],
   imports: [BrowserModule, AppRouting, FormsModule, HttpClientModule],
-  providers: [],
+  providers: [HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

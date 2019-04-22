@@ -1,12 +1,16 @@
 export class Permission {
-  issue_date: string;
-  room: string[];
-  date_from: string;
-  date_to: string;
-  time_from: string;
-  time_to: string;
+  // issue_date: string;
+  room: string; // to be converted to array
+  startDate: string;
+  endDate: string;
+  startTime: string;
+  endTime: string;
   reason: string;
-  student_name: string;
-  student_branch: string;
-  status: number;
+  name: string;
+  branch: string;
+  verificationLevel: number;
+  email: string;
+  reasonForRejection?: string;
+  requestTime?: string;
+  _id?: any;
 }
