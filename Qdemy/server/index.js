@@ -1,7 +1,8 @@
 const express = require('express')
 var cors = require('cors');
 // var User = require('./models/user.model')
-const user = require("./routes/user.routes");
+const userRouter = require("./routes/user.routes");
+const requestRouter = require("./routes/request.routes")
 var mongoose = require('mongoose')
 const app = express();
 const bodyParser = require('body-parser');
@@ -28,7 +29,8 @@ app.get('/', function (req, res) {
     const user = new User();
     res.json('Connected');
 })
-
+app.use('/user', userRouter);
+app.use('/request', requestRouter)
 
 
 // app.get('/data', function (req, res) {
@@ -66,7 +68,6 @@ app.get('/', function (req, res) {
 
 
 
-app.use('/user', user);
 
 // let express = require('express');
 // let bodyParser = require('body-parser');
