@@ -16,4 +16,52 @@ export class HttpService {
         return data;
       });
   }
+
+  getHODReq(branch: string) {
+    return this.http
+      .post("http://127.0.0.1:8080/request/HODRequests", { branch: branch })
+      .map(data => {
+        // console.log(data);
+        return data;
+      });
+  }
+
+  getVPReq() {
+    return this.http
+      .post("http://127.0.0.1:8080/request/VPRequests", {})
+      .map(data => {
+        // console.log(data);
+        return data;
+      });
+  }
+
+  approvebyHOD(id) {
+    return this.http
+      .post("http://127.0.0.1:8080/request/HODVerification", { _id: id })
+      .map(data => {
+        console.log(data);
+        return data;
+      });
+  }
+
+  approvebyVP(id) {
+    return this.http
+      .post("http://127.0.0.1:8080/request/VPVerification", { _id: id })
+      .map(data => {
+        console.log(data);
+        return data;
+      });
+  }
+
+  reject(id) {
+    return this.http
+      .post("http://127.0.0.1:8080/request/rejectRequest", {
+        _id: id,
+        reason: ""
+      })
+      .map(data => {
+        console.log(data);
+        return data;
+      });
+  }
 }
