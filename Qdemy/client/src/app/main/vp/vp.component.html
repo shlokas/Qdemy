@@ -1,3 +1,71 @@
-<p>
-  vp works!
-</p>
+<div class="holder">
+  <!-- views all requests here  -->
+  <h3>
+    Pending Permission Requests
+  </h3>
+  <div class="permission-cards">
+    <div class="card" *ngFor="let perm of permissions">
+      <div
+        class="card-header"
+        [class.status-pending]="
+          perm.verification_level == 0 || perm.verification_level == 1
+        "
+        [class.status-granted]="perm.verification_level == 2"
+        [class.status-rejected]="perm.verification_level == 3"
+      >
+        <div
+          [class.status-pending]="
+            perm.verification_level == 0 || perm.verification_level == 1
+          "
+          [class.status-granted]="perm.verification_level == 2"
+          [class.status-rejected]="perm.verification_level == 3"
+        >
+          <strong>Requirement: {{ perm.room }}</strong>
+          <!-- <span *ngFor="let roomno of perm.room">&nbsp; {{ roomno }} </span> -->
+        </div>
+      </div>
+      <div
+        class="card-body"
+        [class.status-pending]="
+          perm.verification_level == 0 || perm.verification_level == 1
+        "
+        [class.status-granted]="perm.verification_level == 2"
+        [class.status-rejected]="perm.verification_level == 3"
+      >
+        <div class="card-title">{{ perm.reason }}</div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card-text">
+              Date:<strong> {{ perm.startDate }} to {{ perm.endDate }}</strong>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card-text">
+              Student Name:<strong> {{ perm.name }}</strong>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card-text">
+              Timings:
+              <strong>{{ perm.startTime }} to {{ perm.endTime }}</strong>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card-text">Student Branch: {{ perm.branch }}</div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="perm.verification_level == 1" class="card-footer text-right">
+        <button class="btn btn-success" (click)="approveVP(perm._id)">
+          Accept
+        </button>
+        &nbsp;&nbsp;&nbsp;
+        <button class="btn btn-danger" (click)="rejectVP(perm._id)">
+          Reject
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

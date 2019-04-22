@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Permission } from "src/models/permission.model";
+import { user } from "src/app/login/login.component";
+import { HttpService } from "src/services/http.service";
 
 @Component({
   selector: "app-hod",
@@ -7,45 +9,25 @@ import { Permission } from "src/models/permission.model";
   styleUrls: ["./hod.component.css"]
 })
 export class HodComponent implements OnInit {
-  permissions: Permission[] = [
-    {
-      room: ["406", "410A"],
-      issue_date: "12-02-2019",
-      date_from: "12-02-2019",
-      date_to: "12-02-2019",
-      time_from: "12AM",
-      time_to: "2PM",
-      student_branch: "TEIT",
-      student_name: "abc",
-      reason: "TPO",
-      status: 0
-    },
-    {
-      room: ["406"],
-      issue_date: "12-02-2019",
-      date_from: "12-02-2019",
-      date_to: "12-02-2019",
-      time_from: "12AM",
-      time_to: "2PM",
-      student_branch: "TEIT",
-      student_name: "abc",
-      reason: "TPO",
-      status: 3
-    },
-    {
-      room: ["406"],
-      issue_date: "12-02-2019",
-      date_from: "12-02-2019",
-      date_to: "12-02-2019",
-      time_from: "12AM",
-      time_to: "2PM",
-      student_branch: "TEIT",
-      student_name: "abc",
-      reason: "TPO",
-      status: 2
-    }
-  ];
-  constructor() {}
+  permissions: any;
+  constructor(private httpserv: HttpService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.httpserv.getHODReq(user.branch).subscribe(res => {
+      console.log(res);
+      this.permissions = res;
+    });
+  }
+
+  approveHOD(id: string) {
+    this.httpserv.approvebyHOD(id).subscribe(res => {
+      console.log(res);
+    });
+  }
+
+  rejectHOD(id: string) {
+    this.httpserv.reject(id).subscribe(res => {
+      console.log(res);
+    });
+  }
 }
