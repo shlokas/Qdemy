@@ -8,8 +8,7 @@ exports.register = (req, res) => {
 
     let user =
     {
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
+        fname: req.body.first_name + " " + req.body.last_name,
         email: req.body.email,
         pwd: req.body.pwd,
         level: 0
@@ -40,6 +39,22 @@ exports.login = (req, res) => {
             } else {
                 res.json("Incorrect Password")
             }
+        } else {
+            res.json("Incorrect Email")
+        }
+    });
+
+}
+
+
+exports.getProfile = (req, res) => {
+
+    console.log(req.body);
+
+    conn.collection('user').findOne({ email: req.body.email }, { _id: 0 }, function (err, document) {
+        console.log(document);
+        if (document) {
+            res.json(document)
         } else {
             res.json("Incorrect Email")
         }
