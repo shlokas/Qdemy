@@ -104,7 +104,7 @@ exports.approvalByHOD = (req, res) => {
             verification_level: 1
         }
     }
-    conn.collection('request').updateOne(obj, set, function(err, document) {
+    conn.collection('request').updateOne(obj, set, function (err, document) {
         console.log(err);
         console.log(document);
         res.send(document);
@@ -123,7 +123,7 @@ exports.approvalByVP = (req, res) => {
             verification_level: 2
         }
     }
-    conn.collection('request').updateOne(obj, set, function(err, document) {
+    conn.collection('request').updateOne(obj, set, function (err, document) {
         console.log(err);
         console.log(document);
         res.send(document);
@@ -144,7 +144,7 @@ exports.rejectRequest = (req, res) => {
             reasonForRejection: req.body.reason
         }
     }
-    conn.collection('request').updateOne(obj, set, function(err, document) {
+    conn.collection('request').updateOne(obj, set, function (err, document) {
         // console.log(err);
         // console.log(document);
         res.send(document);
@@ -156,7 +156,7 @@ exports.HODrequests = (req, res) => {
     console.log(req.body);
     const obj = {
         branch: branch,
-        verification_level: 0 
+        verification_level: 0
     }
     conn.collection('request').find(obj).toArray(function (err, document) {
         if (err) {
@@ -173,7 +173,7 @@ exports.VPRequests = (req, res) => {
     console.log(req.body);
     const obj = {
         // branch: branch,
-        verification_level: 1 
+        verification_level: 1
     }
     conn.collection('request').find(obj).toArray(function (err, document) {
         if (err) {
@@ -182,4 +182,5 @@ exports.VPRequests = (req, res) => {
             console.log(document)
             res.send(document);
         }
-    });}
+    });
+}
